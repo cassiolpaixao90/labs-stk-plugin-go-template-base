@@ -6,10 +6,12 @@ metadata:
   description: golang template base
   version: 0.0.1
   picture: plugin.png
+  target_path: Path
+
 spec:
-  type: app
+  type: python
   compatibility:
-    - python
+    - golang
   about: docs/about.md
   implementation: docs/implementation.md
   release-notes: docs/release-notes-0.0.1.md
@@ -20,22 +22,26 @@ spec:
     - Api
   stk-projects-only: false
   inputs:
-    - label: Type name of your resource
-      name: resource
+    - label: Nome do projeto
+      name: nome_projeto
       type: text
       required: true
-      default: Client
-      pattern: '([A-Z][a-z]+)+'
-      help: 'Inform your resource name (e.g.: Client)'
-    - label: Choose http method of new endpoint
-      name: method
-      type: text
+      pattern: '([a-z]+)+'
+      help: 'Inform your project name'
+    - label: Golang Version
+      name: version_golang
+      type: select
       items:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - PATCH
-      default: GET
-      required: true
-      help: 'Inform the method of the endpoint (e.g.: post or delete)'
+        - '1.20'
+        - '1.19'
+        - '1.18'
+  hooks:
+    - type: run
+      trigger: after-render
+      working-dir: "{{target_path}}/app"
+      linux:
+        - go mod tidy
+      windows:
+        - go mod tidy
+      mac:
+        - go mod tidy
