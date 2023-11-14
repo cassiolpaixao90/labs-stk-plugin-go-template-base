@@ -47,3 +47,7 @@ $RECYCLE.BIN/
 
 #testes
 tests
+
+.idea
+
+.vscode

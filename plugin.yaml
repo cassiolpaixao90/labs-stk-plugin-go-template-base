@@ -4,12 +4,11 @@ metadata:
   name: go-template-base
   display-name: go-template-base
   description: golang template base
-  version: 0.0.1
+  version: 0.0.2
   picture: plugin.png
-  target_path: Path
 
 spec:
-  type: python
+  type: app
   compatibility:
     - golang
   about: docs/about.md
