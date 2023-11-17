@@ -1,3 +1,3 @@
-module {{nome_projeto}}
+module {{project_name}}
 
 go {{version_golang}}

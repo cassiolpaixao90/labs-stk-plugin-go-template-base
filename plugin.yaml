@@ -4,7 +4,7 @@ metadata:
   name: go-template-base
   display-name: go-template-base
   description: golang template base
-  version: 0.0.2
+  version: 2.0.9
   picture: plugin.png
 
 spec:
@@ -22,11 +22,12 @@ spec:
   stk-projects-only: false
   inputs:
     - label: Nome do projeto
-      name: nome_projeto
+      name: project_name
       type: text
       required: true
-      pattern: '([a-z]+)+'
       help: 'Inform your project name'
+      global: true
+
     - label: Golang Version
       name: version_golang
       type: select
@@ -34,13 +35,25 @@ spec:
         - '1.20'
         - '1.19'
         - '1.18'
+
+    - label: Nome do recurso
+      name: resource
+      type: text
+      required: true
+      help: 'Inform your resource name'
+      global: true
+
+    - label: Porta da aplicacao
+      name: port
+      type: text
+      required: true
+      help: 'Inform your port'
+      global: true
+
   hooks:
     - type: run
       trigger: after-render
-      working-dir: "{{target_path}}/app"
-      linux:
+      commands:
         - go mod tidy
-      windows:
-        - go mod tidy
-      mac:
-        - go mod tidy
+        - echo project generated
+      working-dir: "app"
