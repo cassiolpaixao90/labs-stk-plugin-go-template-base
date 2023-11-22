@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"{{project_name}}/internal/adapters/in/http/handlers/{{resource}}"
-	{{resource}}_service "{{project_name}}/internal/adapter/out/http/client/book-service"
+	{{resource}}_service "{{project_name}}/internal/adapters/out/http/client/{{resource}}_service"
 	"{{project_name}}/internal/application/services"
 )
 

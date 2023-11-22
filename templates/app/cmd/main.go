@@ -1,7 +1,7 @@
 package main
 
 import (
-	"{{project_name}}/internal/adapter/in/http"
+	"{{project_name}}/internal/adapters/in/http"
 )
 
 func main() {
