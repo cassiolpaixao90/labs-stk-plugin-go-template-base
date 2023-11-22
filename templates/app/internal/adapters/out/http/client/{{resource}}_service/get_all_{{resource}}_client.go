@@ -16,7 +16,7 @@ type GetAll{{resource|capitalize}}Client struct {
 }
 
 func NewGetAll{{resource|capitalize}}Client() out.GetAll{{resource|capitalize}}ClientPort {
-	return &Get{{resource|capitalize}}Client{}
+	return &GetAll{{resource|capitalize}}Client{}
 }
 
 func (g *GetAll{{resource|capitalize}}Client) GetAll{{resource|capitalize}}(ctx context.Context, id string) (*domain.{{resource|capitalize}}Domain, error) {

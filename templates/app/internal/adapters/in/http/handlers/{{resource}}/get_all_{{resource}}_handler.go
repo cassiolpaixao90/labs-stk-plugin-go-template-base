@@ -14,8 +14,8 @@ type IGetAll{{resource|capitalize}}Handler interface {
 	GetAll{{resource|capitalize}}(c echo.Context) error
 }
 
-func NewGetAll{{resource|capitalize}}Handler() IGetAll{{resource|capitalize}}Handler {
-	return &GetAll{{resource|capitalize}}Handler{}
+func NewGetAll{{resource|capitalize}}Handler(getAll{{resource|capitalize}}UseCase in.GetAll{{resource|capitalize}}UseCase) IGetAll{{resource|capitalize}}Handler {
+	return &GetAll{{resource|capitalize}}Handler{getAll{{resource|capitalize}}UseCase}
 }
 
 func (b *GetAll{{resource|capitalize}}Handler) GetAll{{resource|capitalize}}(c echo.Context) error {
