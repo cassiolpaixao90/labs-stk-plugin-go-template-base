@@ -6,8 +6,8 @@ import (
 	"{{project_name}}/internal/application/services"
 )
 
-func NewGetAll{{resource|capitalize}}Instance() {{resource}}.IGetAll{{resource|capitalize}}Handler {
-	client := {{resource}}_service.NewGetAll{{resource|capitalize}}Client()
-	service := services.NewGetAll{{resource|capitalize}}Service(client)
-	return {{resource}}.NewGetAll{{resource|capitalize}}Handler(service)
+func NewGetAll{{custom_resource}}Instance() {{resource}}.IGetAll{{custom_resource}}Handler {
+	client := {{resource}}_service.NewGetAll{{custom_resource}}Client()
+	service := services.NewGetAll{{custom_resource}}Service(client)
+	return {{resource}}.NewGetAll{{custom_resource}}Handler(service)
 }

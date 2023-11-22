@@ -11,15 +11,15 @@ import (
 	"net/http"
 )
 
-type GetAll{{resource|capitalize}}Client struct {
+type GetAll{{custom_resource}}Client struct {
 	client helpers.HttpClientRequest
 }
 
-func NewGetAll{{resource|capitalize}}Client() out.GetAll{{resource|capitalize}}ClientPort {
-	return &GetAll{{resource|capitalize}}Client{}
+func NewGetAll{{custom_resource}}Client() out.GetAll{{custom_resource}}ClientPort {
+	return &GetAll{{custom_resource}}Client{}
 }
 
-func (g *GetAll{{resource|capitalize}}Client) GetAll{{resource|capitalize}}(ctx context.Context, id string) (*domain.{{resource|capitalize}}Domain, error) {
+func (g *GetAll{{custom_resource}}Client) GetAll{{custom_resource}}(ctx context.Context, id string) (*domain.{{custom_resource}}Domain, error) {
 
 	req, _ := http.NewRequest(http.MethodGet, "url", nil)
 
@@ -37,7 +37,7 @@ func (g *GetAll{{resource|capitalize}}Client) GetAll{{resource|capitalize}}(ctx 
 
 	body, _ := io.ReadAll(resp.Body)
 
-	var response *dtos.GetAll{{resource|capitalize}}Response
+	var response *dtos.GetAll{{custom_resource}}Response
 	if err := json.Unmarshal(body, &response); err != nil {
 		return nil, err
 	}

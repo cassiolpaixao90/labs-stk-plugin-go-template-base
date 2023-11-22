@@ -51,6 +51,9 @@ spec:
       help: 'Inform your port'
       global: true
 
+  computed-inputs:
+    - custom_resource: "{{resource|capitalize}}"
+
   hooks:
     - type: run
       trigger: after-render

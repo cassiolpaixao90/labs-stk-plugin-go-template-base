@@ -6,20 +6,20 @@ import (
 	"{{project_name}}/internal/application/ports/in"
 )
 
-type GetAll{{resource|capitalize}}Handler struct{
-	in.GetAll{{resource|capitalize}}UseCase
+type GetAll{{custom_resource}}Handler struct{
+	in.GetAll{{custom_resource}}UseCase
 }
 
-type IGetAll{{resource|capitalize}}Handler interface {
-	GetAll{{resource|capitalize}}(c echo.Context) error
+type IGetAll{{custom_resource}}Handler interface {
+	GetAll{{custom_resource}}(c echo.Context) error
 }
 
-func NewGetAll{{resource|capitalize}}Handler(getAll{{resource|capitalize}}UseCase in.GetAll{{resource|capitalize}}UseCase) IGetAll{{resource|capitalize}}Handler {
-	return &GetAll{{resource|capitalize}}Handler{getAll{{resource|capitalize}}UseCase}
+func NewGetAll{{custom_resource}}Handler(getAll{{custom_resource}}UseCase in.GetAll{{custom_resource}}UseCase) IGetAll{{custom_resource}}Handler {
+	return &GetAll{{custom_resource}}Handler{getAll{{custom_resource}}UseCase}
 }
 
-func (b *GetAll{{resource|capitalize}}Handler) GetAll{{resource|capitalize}}(c echo.Context) error {
-	{{resource}}, err := b.GetAll{{resource|capitalize}}UseCase.GetAll{{resource|capitalize}}(context.Background(), "")
+func (b *GetAll{{custom_resource}}Handler) GetAll{{custom_resource}}(c echo.Context) error {
+	{{resource}}, err := b.GetAll{{custom_resource}}UseCase.GetAll{{custom_resource}}(context.Background(), "")
 	if err != nil {
 		return err
 	}

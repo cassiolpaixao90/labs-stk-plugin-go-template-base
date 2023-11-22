@@ -5,6 +5,6 @@ import (
 	"{{project_name}}/internal/application/domain"
 )
 
-type GetAll{{resource|capitalize}}ClientPort interface {
-	GetAll{{resource|capitalize}}(ctx context.Context, id string) (*domain.{{resource|capitalize}}Domain, error)
+type GetAll{{custom_resource}}ClientPort interface {
+	GetAll{{custom_resource}}(ctx context.Context, id string) (*domain.{{custom_resource}}Domain, error)
 }
