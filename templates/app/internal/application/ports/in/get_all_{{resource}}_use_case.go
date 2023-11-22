@@ -5,6 +5,6 @@ import (
 	"{{project_name}}/internal/application/domain"
 )
 
-type GetAll{{resource|capitalize}}UseCase interface {
-	GetAll{{resource|capitalize}}(ctx context.Context, id string) (*domain.{{resource|capitalize}}Domain, error)
+type GetAll{{capitalize_resource}}UseCase interface {
+	GetAll{{capitalize_resource}}(ctx context.Context, id string) (*domain.{{capitalize_resource}}Domain, error)
 }

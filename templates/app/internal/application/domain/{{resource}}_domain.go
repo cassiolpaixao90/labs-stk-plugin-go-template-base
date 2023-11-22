@@ -1,6 +1,6 @@
 package domain
 
-type {{resource|capitalize}}Domain struct {
+type {{capitalize_resource}}Domain struct {
 	ID   string
 	Name string
 }

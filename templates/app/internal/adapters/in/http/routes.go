@@ -14,5 +14,5 @@ func NewHttpRoutes(e *echo.Echo) *Routes {
 }
 
 func (r *Routes) SetupRouter() {
-	r.echo.GET("/{{resource}}", handlers.NewGetAll{{resource|capitalize}}Instance().GetAll{{resource|capitalize}})
+	r.echo.GET("/{{resource}}", handlers.NewGetAll{{capitalize_resource}}Instance().GetAll{{capitalize_resource}})
 }

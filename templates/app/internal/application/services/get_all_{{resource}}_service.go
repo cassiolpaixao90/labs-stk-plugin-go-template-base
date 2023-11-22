@@ -7,18 +7,18 @@ import (
 	"{{project_name}}/internal/application/ports/out"
 )
 
-type GetAll{{resource|capitalize}}Service struct {
-	GetAll{{resource|capitalize}}ClientPort out.GetAll{{resource|capitalize}}ClientPort
+type GetAll{{capitalize_resource}}Service struct {
+	GetAll{{capitalize_resource}}ClientPort out.GetAll{{capitalize_resource}}ClientPort
 }
 
-func NewGetAll{{resource|capitalize}}Service(
-	getAll{{resource|capitalize}}Port out.GetAll{{resource|capitalize}}ClientPort,
-) in.GetAll{{resource|capitalize}}UseCase {
-	return &GetAll{{resource|capitalize}}Service{getAll{{resource|capitalize}}Port}
+func NewGetAll{{capitalize_resource}}Service(
+	getAll{{capitalize_resource}}Port out.GetAll{{capitalize_resource}}ClientPort,
+) in.GetAll{{capitalize_resource}}UseCase {
+	return &GetAll{{capitalize_resource}}Service{getAll{{capitalize_resource}}Port}
 }
 
-func (g *GetAll{{resource|capitalize}}Service) GetAll{{resource|capitalize}}(ctx context.Context, id string) (*domain.{{resource|capitalize}}Domain, error) {
-	book, err := g.GetAll{{resource|capitalize}}ClientPort.GetAll{{resource|capitalize}}(ctx, id)
+func (g *GetAll{{capitalize_resource}}Service) GetAll{{capitalize_resource}}(ctx context.Context, id string) (*domain.{{capitalize_resource}}Domain, error) {
+	book, err := g.GetAll{{capitalize_resource}}ClientPort.GetAll{{capitalize_resource}}(ctx, id)
 	if err != nil {
 		return nil, err
 	}

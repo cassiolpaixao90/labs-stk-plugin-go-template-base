@@ -2,13 +2,13 @@ package dtos
 
 import "{{project_name}}/internal/application/domain"
 
-type GetAll{{resource|capitalize}}Response struct {
+type GetAll{{capitalize_resource}}Response struct {
 	ID   string `json:"id,omitempty"`
 	Name string `json:"name"`
 }
 
-func (g *GetAll{{resource|capitalize}}Response) ToDomain() *domain.{{resource|capitalize}}Domain {
-	return &domain.{{resource|capitalize}}Domain{
+func (g *GetAll{{capitalize_resource}}Response) ToDomain() *domain.{{capitalize_resource}}Domain {
+	return &domain.{{capitalize_resource}}Domain{
 		ID:   g.ID,
 		Name: g.Name,
 	}

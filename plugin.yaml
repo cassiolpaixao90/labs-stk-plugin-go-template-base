@@ -51,6 +51,34 @@ spec:
       help: 'Inform your port'
       global: true
 
+    - label: Criar arquivo openapi ?
+      name: can_create_openapi
+      type: bool
+      required: true
+      default: true
+
+    - label: Criar Dockerfile ?
+      name: can_create_dockerfile
+      type: bool
+      required: true
+      default: true
+
+    - label: CI Options
+      name: ci_option
+      type: select
+      required: true
+      default: "Nenhum"
+      items:
+        - "1-Github Actions"
+        - "2-Gitlab"
+        - "3-Nenhum"
+
+  computed-inputs:
+    capitalize_resource: "{{resource|capitalize}}"
+    gitlab_ci_folder_name: "{{resource}}_lib"
+    custom_get_resource: "{{custom_default_resource}}s"
+    #ci_option_type: "{{ci_option|regex_replace('([a-zA-Z- ])\w+', '')}}"
+
   hooks:
     - type: run
       trigger: after-render
@@ -58,3 +86,76 @@ spec:
         - go mod tidy
         - echo project generated
       working-dir: "app"
+
+    - type: run
+      trigger: after-render
+      working-dir: "app"
+      commands:
+        - rm -r api
+      condition:
+        variable: can_create_openapi
+        operator: "=="
+        value: false
+
+    - type: run
+      trigger: after-render
+      working-dir: "app"
+      commands:
+        - rm Dockerfile
+      condition:
+        variable: can_create_dockerfile
+        operator: "=="
+        value: false
+
+    - type: run
+      trigger: after-render
+      working-dir: "."
+      commands:
+        - mkdir -p cd .github/workflows
+        - touch .github/workflows/ci.yaml
+      condition:
+        #variable: ci_option_type
+        variable: ci_option
+        operator: "=="
+        value: "1-Github Actions"
+
+    - type: run
+      trigger: after-render
+      working-dir: "."
+      commands:
+        - touch go.gitlab-ci.yaml
+      condition:
+        #variable: ci_option_type
+        variable: ci_option
+        operator: "=="
+        value: "2-Gitlab"
+
+    - type: edit
+      trigger: after-render
+      path: ".github/workflows/ci.yaml"
+      changes:
+        - insert:
+            line: 0
+            snippet: snippet/github_action_content.txt
+            when:
+              not-exists-snippet: snippet/github_action_content.txt
+      condition:
+        #variable: ci_option_type
+        variable: ci_option
+        operator: "=="
+        value: "1-Github Actions"
+
+    - type: edit
+      trigger: after-render
+      path: "go.gitlab-ci.yaml"
+      changes:
+        - insert:
+            line: 0
+            snippet: snippet/gitlab_content.txt
+            when:
+              not-exists-snippet: snippet/gitlab_content.txt
+      condition:
+        #variable: ci_option_type
+        variable: ci_option
+        operator: "=="
+        value: "2-Gitlab"
