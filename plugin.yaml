@@ -32,6 +32,7 @@ spec:
       name: version_golang
       type: select
       items:
+        - '1.21'
         - '1.20'
         - '1.19'
         - '1.18'
