@@ -52,7 +52,7 @@ spec:
       global: true
 
   computed-inputs:
-    - custom_resource: "{{resource|capitalize}}"
+    custom_resource: "{{resource|capitalize}}"
 
   hooks:
     - type: run
