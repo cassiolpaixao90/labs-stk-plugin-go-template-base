@@ -19,7 +19,7 @@ func NewGetAll{{resource|capitalize}}Handler() IGetAll{{resource|capitalize}}Han
 }
 
 func (b *GetAll{{resource|capitalize}}Handler) GetAll{{resource|capitalize}}(c echo.Context) error {
-	books, err := b.Get{{resource|capitalize}}UseCase.GetAll{{resource|capitalize}}(context.Background(), "")
+	{{resource}}, err := b.GetAll{{resource|capitalize}}UseCase.GetAll{{resource|capitalize}}(context.Background(), "")
 	if err != nil {
 		return err
 	}

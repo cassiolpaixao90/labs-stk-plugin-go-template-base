@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"{{project_name}}/internal/adapters/in/http/handlers/{{resource}}"
+	{{resource}}_service "{{project_name}}/internal/adapter/out/http/client/book-service"
+	"{{project_name}}/internal/application/services"
 )
 
 func NewGetAll{{resource|capitalize}}Instance() {{resource}}.IGetAll{{resource|capitalize}}Handler {
