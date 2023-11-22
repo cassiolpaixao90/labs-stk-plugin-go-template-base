@@ -2,7 +2,7 @@ package out
 
 import (
 	"context"
-	"{{project_name}}}}/internal/application/domain"
+	"{{project_name}}/internal/application/domain"
 )
 
 type GetAll{{resource|capitalize}}ClientPort interface {
