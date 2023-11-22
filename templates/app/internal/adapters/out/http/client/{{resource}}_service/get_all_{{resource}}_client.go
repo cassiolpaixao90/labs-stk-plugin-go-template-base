@@ -37,7 +37,7 @@ func (g *GetAll{{resource|capitalize}}Client) GetAll{{resource|capitalize}}(ctx 
 
 	body, _ := io.ReadAll(resp.Body)
 
-	var response *dtos.GetAllBooksResponse
+	var response *dtos.GetAll{{resource|capitalize}}Response
 	if err := json.Unmarshal(body, &response); err != nil {
 		return nil, err
 	}
