@@ -5,7 +5,7 @@ import (
 )
 
 func NewGetAll{{resource|capitalize}}Instance() {{resource}}.IGetAll{{resource|capitalize}}Handler {
-	client := {{resource}}_service.NewGetAll{{resource|capitalize}Client()
+	client := {{resource}}_service.NewGetAll{{resource|capitalize}}Client()
 	service := services.NewGetAll{{resource|capitalize}}Service(client)
 	return {{resource}}.NewGetAll{{resource|capitalize}}Handler(service)
 }
